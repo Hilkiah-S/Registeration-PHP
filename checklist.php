@@ -1,8 +1,10 @@
 <?php 
 session_start();
 echo $_SESSION['id'];
+
 if(isset($_POST['submit'])){
   
+
   $items = $_POST['common'];
   
   foreach($items as $key=>$values){
@@ -13,6 +15,9 @@ if(isset($_POST['submit'])){
     formaction('checklist.php')</script>";
   }
   if(count($items)!=0){
+ 
+
+
   if(count($items)==2){
     echo"both";
     $oil=1;

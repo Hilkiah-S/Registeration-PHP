@@ -1,0 +1,72 @@
+[
+    {
+        "ID": "1",
+        "firstname": "Sagni",
+        "lastname": "programmer",
+        "password": "PASSWORD",
+        "email": "sagni@gmail.com"
+    },
+    {
+        "ID": "2",
+        "firstname": "Kevin",
+        "lastname": "Durant",
+        "password": "2timeMVP",
+        "email": "kevin@gmail.com"
+    },
+    {
+        "ID": "3",
+        "firstname": "Mike",
+        "lastname": "Van",
+        "password": "mikemill",
+        "email": "mike@gmail.com"
+    },
+    {
+        "ID": "4",
+        "firstname": "James",
+        "lastname": "harden",
+        "password": "76ers",
+        "email": "harden@gmail.com"
+    },
+    {
+        "ID": "5",
+        "firstname": "Dark",
+        "lastname": "light",
+        "password": "1234",
+        "email": "dark@gmail.com"
+    },
+    {
+        "ID": "6",
+        "firstname": "Kirubel",
+        "lastname": "Demise",
+        "password": "123456",
+        "email": "kirubel@gmail.com"
+    },
+    {
+        "ID": "7",
+        "firstname": "sani",
+        "lastname": "programmer",
+        "password": "123456",
+        "email": "sagni@gmail.com"
+    },
+    {
+        "ID": "8",
+        "firstname": "habtamu ",
+        "lastname": "abebe",
+        "password": "54321",
+        "email": "habtamu@gmail.com"
+    },
+    {
+        "ID": "9",
+        "firstname": "Draymond",
+        "lastname": "Green",
+        "password": "GoldenStateWarriows",
+        "email": "moneygreen@gmail.com"
+    },
+    {
+        "ID": "10",
+        "firstname": "Addis",
+        "lastname": "User",
+        "password": "1234567",
+        "email": "addis@gmail.com"
+    }
+]

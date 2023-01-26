@@ -16,11 +16,24 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 $sql="SELECT * FROM admintable WHERE email='$mail'";
 $res=mysqli_query($conn,$sql);
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
+$sqlone="SELECT * FROM tableofadmin WHERE email='$mail'";
+$resone=mysqli_query($conn,$sqlone);
+$rowone=mysqli_fetch_array($resone,MYSQLI_ASSOC);
+
 if($mail==$row['email'] && $userpassword==$row['password']){
+  // if($rowone['id']==11111111){
+  //   $_SESSION['User']=$rowone['adminfirstname'];
+  //   || 
+  //   
+  // }
   $_SESSION['User']=$row['firstname'];
   $_SESSION['Pass']=$row['password'];
-  
+  echo $rowone['adminfirstname'];  
+  echo $rowone['adminpassword']; 
   header("Location:welcome.php");
+}
+elseif ($mail==$rowone['email'] && $userpassword==$rowone['adminpassword']) {
+  header("Location:adminpage.php");
 }
 else{
   echo "<script>

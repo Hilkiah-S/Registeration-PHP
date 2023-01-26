@@ -3,8 +3,7 @@ session_start();
 
 
 
-$y=0;
-$x=0;
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -24,36 +23,70 @@ $id=$_SESSION['id'];
   foreach($items as $key=>$values){
     echo $values.",";
   };
+  $sqlone="SELECT * FROM clients WHERE ID='$id'";
+  $result=mysqli_query($conn,$sqlone);
+  $row=mysqli_fetch_assoc($result);
+  $sugarbool=$row['sugarbool'];
+  $oilbool=$row['oilbool'];
 
+  if($sugarbool=="false"&&$oilbool=="false"){
+    header("Location:toomanyentry.php");
+  }
+  else{
   if(count($items)!=0){
   if(count($items)==2){
+    if($sugarbool=="true"&&$oilbool=="true"){
     echo"both";
     $sql = "UPDATE clients SET oil=oil+1 WHERE ID='$id'";
     
     $sqltwo = "UPDATE clients SET sugar=sugar+1 WHERE ID='$id'";
-    
-    
+  mysqli_multi_query($conn, $sql);
+  mysqli_multi_query($conn,$sqltwo);
+  $sqlthree="UPDATE clients SET sugarbool='false',oilbool='false' WHERE ID='$id'";
+   mysqli_multi_query($conn,$sqlthree); 
+    }
   }
-  else if($items[0]=='oil'){
+  else if(count($items)==1&&$items[0]=='oil'){
+    if($oil=="true"){
     echo"  oil only";
-    $sql = "UPDATE clients SET oil=oil+3
+    $sql = "UPDATE clients SET oil=oil+1
     WHERE ID='$id'";
+    mysqli_multi_query($conn, $sql);
+     $sqlthree="UPDATE clients SET oilbool='false' WHERE ID='$id'";
+   mysqli_multi_query($conn,$sqlthree); 
+    }
   }
-  else if($items[0]=='sugar'){
+  else if(count($items)==1&&$items[0]=='sugar'){
+    if($sugar=="true"){
     echo "  sugar only";
-    $sql = "UPDATE clients SET sugar=sugar+8
-WHERE ID='$id'";;
-  }
+    $sql = "UPDATE clients SET sugar=sugar+1
+WHERE ID='$id'";
+mysqli_multi_query($conn, $sql);
+ $sqlthree="UPDATE clients SET sugarbool='false' WHERE ID='$id'";
+   mysqli_multi_query($conn,$sqlthree); 
+    }
 }
+// if(count($items)==1){
+//   mysqli_multi_query($conn, $sql);
+// }
+// if(count($items)==2){
+//   mysqli_multi_query($conn, $sql);
+//   mysqli_multi_query($conn,$sqltwo);
+// }
+}
+else{
+  header("Location:toomanyentry.php");
+}
+}
+// if (mysqli_multi_query($conn, $sql)) {
+//   echo("true");
 
-if (mysqli_multi_query($conn, $sql)) {
-  echo("true");
-  if(mysqli_multi_query($conn,$sqltwo)){
-    echo("false");
-  }
-} else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+//   if(mysqli_multi_query($conn,$sqltwo)){
+//     echo("false");
+//   }
+// } else {
+//   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+// }
 
 mysqli_close($conn);
 

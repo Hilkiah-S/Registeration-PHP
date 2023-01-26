@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <style>
+      /* Navigation bar at the top with no margin */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background-color: white;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+      /* Buttons with same color and slight radius curve */
+      nav button {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      /* Change button color on hover */
+      nav button:hover {
+        background-color: #292929;
+      }
+      /* Linear gradient background for body */
+      body {
+        background: linear-gradient(to right,rgb(194, 190, 190), rgb(37, 32, 32),rgb(20, 17, 17), black);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button>Home</button>
+      <button>About</button>
+      <a href="login.php"><button>Login</button></a>
+    </nav>
+    <div style="text-align:center;">
+      <h1 style="color:white;margin-top:100px;font-family: Arial, Helvetica, sans-serif;">Welcome to My Landing Page</h1>
+      <!-- <p style="color:white;font-family: Arial, Helvetica, sans-serif">Take a look around and learn more about my products and services.</p> -->
+    </div>
+  </body>
+</html>

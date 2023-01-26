@@ -25,7 +25,17 @@ $sql = "INSERT INTO admintable (firstname, lastname,password, email)
 VALUES ('$firstname', '$lastname','$userpassword','$email');";
 
 
+
 if (mysqli_multi_query($conn, $sql)) {
+  
+$anothersql ="SELECT*FROM admintable";
+$results=$conn->query($anothersql);
+while($product = $results->fetch_assoc()){
+  $products[] = $product;
+}
+$encoded_data=json_encode($products,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+file_put_contents('json/admintable.json',$encoded_data);
+
   header("Location:login.php");
 } else {
   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
