@@ -1,11 +1,23 @@
 <?php 
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "admin";
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
+// $sqlexecute="SELECT * FROM tableofadmin";
 
+// $resultone=$conn->query($sqlexecute);
+// $row=$resultone->fetch_assoc();
+// $email=$row['email'];
+// $id=$row['ID'];
 
+// if($_GET['email']==$email && $_GET['id']==$id){
 if(isset($_POST['submit'])){
+  
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $dbname = "admin";
+  $dbname = "admin"; 
 $sessionnum=$_POST['sessionstr'];
 $sugarinv=$_POST['sugarinv'];
 $oilinv=$_POST['oilinv'];
@@ -90,10 +102,19 @@ if(isset($sugarinv)){
 ?>
 
 <html>
-    <head></head>
-    <body>
-  <input type="button" value="Register Employee">
-  <input type="button" value="See Database">
+    <head><style>
+   #up{
+        background-color:aqua;
+        border-radius:4px;
+        color:white;
+        float:right;
+     }
+
+    </style></head>
+    <body>    
+    <a href='index.php'><input type='button' value='BACK TO LOGIN' id="up"></a>
+  <a href="register.php"><input type="button" value="Register Employee"></a>
+  <a href="tabledisplay.php"><input type="button" value="See Database"></a>
   <br/>
 <form action="adminpage.php" method="post">
 <lable for="oilinv">ENTER TOTAL AMOUNT OF OIL INVENTORY:</lable>
@@ -104,7 +125,7 @@ if(isset($sugarinv)){
 
 <lable for="sessionstr">SESSION NUMBER</lable>
     <input type="textfield" name="sessionstr" id="sessionstr"/><br>
-    <input type="submit" name="submit" value="submit"/>
+    <input type="submit" name="submit" value="START"/> 
 </form>
 </body>
 </html>

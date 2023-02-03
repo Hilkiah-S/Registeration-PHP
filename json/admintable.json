@@ -1,72 +1,50 @@
 [
     {
         "ID": "1",
-        "firstname": "Sagni",
-        "lastname": "programmer",
-        "password": "PASSWORD",
-        "email": "sagni@gmail.com"
+        "firstname": "James",
+        "lastname": "harden",
+        "password": "12345",
+        "email": "harden@gmail.com",
+        "picture": ""
     },
     {
         "ID": "2",
-        "firstname": "Kevin",
-        "lastname": "Durant",
-        "password": "2timeMVP",
-        "email": "kevin@gmail.com"
+        "firstname": "Sagni",
+        "lastname": "programmer",
+        "password": "GSW",
+        "email": "sagni@gmail.com",
+        "picture": ""
     },
     {
         "ID": "3",
-        "firstname": "Mike",
-        "lastname": "Van",
-        "password": "mikemill",
-        "email": "mike@gmail.com"
+        "firstname": "Golden",
+        "lastname": "State",
+        "password": "goldenstatewarriors",
+        "email": "bay@gmail.com",
+        "picture": ""
     },
     {
         "ID": "4",
-        "firstname": "James",
-        "lastname": "harden",
-        "password": "76ers",
-        "email": "harden@gmail.com"
+        "firstname": "Draymond",
+        "lastname": "Green",
+        "password": "green",
+        "email": "dray@gmail.com",
+        "picture": ""
     },
     {
         "ID": "5",
-        "firstname": "Dark",
-        "lastname": "light",
-        "password": "1234",
-        "email": "dark@gmail.com"
+        "firstname": "Steve",
+        "lastname": "Nash",
+        "password": "NETSORG",
+        "email": "nash@gmail.com",
+        "picture": "SteveNash01-02-23-09-42-47.jpg"
     },
     {
         "ID": "6",
-        "firstname": "Kirubel",
-        "lastname": "Demise",
-        "password": "123456",
-        "email": "kirubel@gmail.com"
-    },
-    {
-        "ID": "7",
-        "firstname": "sani",
-        "lastname": "programmer",
-        "password": "123456",
-        "email": "sagni@gmail.com"
-    },
-    {
-        "ID": "8",
-        "firstname": "habtamu ",
-        "lastname": "abebe",
-        "password": "54321",
-        "email": "habtamu@gmail.com"
-    },
-    {
-        "ID": "9",
-        "firstname": "Draymond",
-        "lastname": "Green",
-        "password": "GoldenStateWarriows",
-        "email": "moneygreen@gmail.com"
-    },
-    {
-        "ID": "10",
-        "firstname": "Addis",
-        "lastname": "User",
-        "password": "1234567",
-        "email": "addis@gmail.com"
+        "firstname": "Bam",
+        "lastname": "Atebayou",
+        "password": "miami",
+        "email": "hates@gmail.com",
+        "picture": "BamAtebayou03-02-23-09-08-12.jpg"
     }
 ]

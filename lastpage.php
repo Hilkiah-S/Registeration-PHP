@@ -11,13 +11,14 @@ $dbname = "admin";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+
 // Check connection
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-echo $_SESSION['id'];
+// echo $_SESSION['id'];
 $id=$_SESSION['id'];
-  
+ 
   $items = $_POST['common'];
   
   foreach($items as $key=>$values){
@@ -34,6 +35,10 @@ $id=$_SESSION['id'];
   }
   else{
   if(count($items)!=0){
+    $sqlitem = "SELECT * FROM items";
+    $gotfrom = mysqli_query($conn,$sqlitem);
+    $everyrow = mysqli_fetch_assoc($gotfrom);
+    if($everyrow['InventoryOil']>0&&$everyrow['InventorySugar']>0){
   if(count($items)==2){
     if($sugarbool=="true"&&$oilbool=="true"){
     echo"both";
@@ -44,27 +49,72 @@ $id=$_SESSION['id'];
   mysqli_multi_query($conn,$sqltwo);
   $sqlthree="UPDATE clients SET sugarbool='false',oilbool='false' WHERE ID='$id'";
    mysqli_multi_query($conn,$sqlthree); 
+   if($everyrow['InventoryOil']>0&&$everyrow['InventorySugar']>0){
+   $anothersql="UPDATE items SET InventoryOil=InventoryOil-1,InventorySugar=InventorySugar-1";
+   mysqli_query($conn,$anothersql);}
+   if (mysqli_multi_query($conn, $sqlthree)) {
+  
+    $anotheronesql ="SELECT*FROM clients";
+    $results=$conn->query($anotheronesql);
+    while($product = $results->fetch_assoc()){
+      $products[] = $product;
+    }
+    $encoded_data=json_encode($products,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents('json/clients.json',$encoded_data);
+    
+      
+    } 
     }
   }
   else if(count($items)==1&&$items[0]=='oil'){
-    if($oil=="true"){
+    if($oilbool=="true"){
     echo"  oil only";
     $sql = "UPDATE clients SET oil=oil+1
     WHERE ID='$id'";
     mysqli_multi_query($conn, $sql);
      $sqlthree="UPDATE clients SET oilbool='false' WHERE ID='$id'";
    mysqli_multi_query($conn,$sqlthree); 
+   if($everrow['Inventory']>0){
+   $anothersql="UPDATE items SET InventoryOil=InventoryOil-1";
+   mysqli_query($conn,$anothersql);}
+   if (mysqli_multi_query($conn, $anothersql)) {
+  
+    $anotheronesql ="SELECT*FROM clients";
+    $results=$conn->query($anotheronesql);
+    while($product = $results->fetch_assoc()){
+      $products[] = $product;
+    }
+    $encoded_data=json_encode($products,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents('json/clients.json',$encoded_data);
+    
+      
+    } 
     }
   }
   else if(count($items)==1&&$items[0]=='sugar'){
-    if($sugar=="true"){
+    if($sugarbool=="true"){
     echo "  sugar only";
     $sql = "UPDATE clients SET sugar=sugar+1
 WHERE ID='$id'";
 mysqli_multi_query($conn, $sql);
  $sqlthree="UPDATE clients SET sugarbool='false' WHERE ID='$id'";
-   mysqli_multi_query($conn,$sqlthree); 
+   mysqli_multi_query($conn,$sqlthree);
+   if($everrow['InventorySugar']>0){
+   $anothersql="UPDATE items SET InventorySugar=InventorySugar-1";
+   mysqli_query($conn,$anothersql); }
     }
+    if (mysqli_multi_query($conn, $anothersql)) {
+  
+      $anotheronesql ="SELECT*FROM clients";
+      $results=$conn->query($anotheronesql);
+      while($product = $results->fetch_assoc()){
+        $products[] = $product;
+      }
+      $encoded_data=json_encode($products,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+      file_put_contents('json/clients.json',$encoded_data);
+      
+        
+      } 
 }
 // if(count($items)==1){
 //   mysqli_multi_query($conn, $sql);
@@ -73,6 +123,10 @@ mysqli_multi_query($conn, $sql);
 //   mysqli_multi_query($conn, $sql);
 //   mysqli_multi_query($conn,$sqltwo);
 // }
+    }
+    else{
+      header("Location:outofstock.php");
+    }
 }
 else{
   header("Location:toomanyentry.php");

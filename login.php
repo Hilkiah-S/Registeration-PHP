@@ -28,12 +28,15 @@ if($mail==$row['email'] && $userpassword==$row['password']){
   // }
   $_SESSION['User']=$row['firstname'];
   $_SESSION['Pass']=$row['password'];
+  $_SESSION['id']=$row['ID'];
+  $name=$row['adminfirstname'];
   echo $rowone['adminfirstname'];  
   echo $rowone['adminpassword']; 
   header("Location:welcome.php");
 }
 elseif ($mail==$rowone['email'] && $userpassword==$rowone['adminpassword']) {
-  header("Location:adminpage.php");
+  $email=$rowone['email'];
+  header("Location:adminpage.php?id=1&email=$email");
 }
 else{
   echo "<script>
@@ -60,16 +63,16 @@ else{
     <div class="form-group">
       <input type="password" class="form-control" id="email" placeholder="Enter password" name="pswd">
     </div>
-    <button type="submit" id="button" class="btn btn-primary deep-purple btn-block " name="submit">Submit</button>
-    <p>Don't have an account?<p><a href="register.php">REGISTER</a>
+    <button type="submit" id="button" class="btn btn-primary deep-purple btn-block " name="submit">LOGIN</button>
+    <!-- <p>Don't have an account?<p><a href="register.php">REGISTER</a> -->
 <br>
     <br>
     
-    <div id="btn" class="text-center">
+    <!-- <div id="btn" class="text-center">
    <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
    <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
    <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
-   </div>
+   </div> -->
  
   </form>
 </body>
